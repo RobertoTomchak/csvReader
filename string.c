@@ -9,9 +9,9 @@
 		n: initial size of string
 	@return: pointer to an empty string
 */
-struct String *createString(size_t n)
+struct String* createString(size_t n)
 {
-	struct String *s = malloc(sizeof(struct String));
+	struct String* s = malloc(sizeof(struct String));
 	if (!s)
 		return NULL;
 
@@ -28,12 +28,12 @@ struct String *createString(size_t n)
 }
 
 /*
-	initializeString(struct String *s): sets given string to empty string
+	initializeString(struct String* s): sets given string to empty string
 	@parameters:
 		s: pointer to string
 	@return: none
 */
-void initializeString(struct String *s)
+void initializeString(struct String* s)
 {
 	s->text = malloc(sizeof(char));
 	if (!s->text)
@@ -44,18 +44,18 @@ void initializeString(struct String *s)
 }
 
 /*
-	addChar(struct String *s, char c): adds char to end of string
+	addChar(struct String* s, char c): adds char to end of string
 	@parameters:
-		*s: pointer to string to be modified
-		 c: char to be added to s
+		s: pointer to string to be modified
+		c: char to be added to s
 	@return: 1 if successfull; 0 otherwise
 */ 
-int addChar(struct String *s, char c)
+int addChar(struct String* s, char c)
 {
 	// if doesnt fit capacity, double capacity
 	if (s->size + 1 >= s->capacity) {
 		size_t newCapacity = 2 * (s->capacity + 1);
-		char *temp = realloc(s->text, newCapacity);
+		char* temp = realloc(s->text, newCapacity);
 		if (!temp)
 			return 0;	
 		s->text = temp;
@@ -68,16 +68,16 @@ int addChar(struct String *s, char c)
 }
 
 /*
-	concatenate(struct String *s1, struct String *s2): concatenates both string
+	concatenate(struct String* s1, struct String* s2): concatenates both string
 	@parameters:
-		*s1: pointer to first string
-		*s2: pointer to second string
+		s1: pointer to first string
+		s2: pointer to second string
 	@return: pointer to concatenated string
 */
-struct String *concatenate(struct String *s1, struct String *s2)
+struct String* concatenate(struct String* s1, struct String* s2)
 {
 	// s3 = s1 + s2
-	struct String *s3 = malloc(sizeof(struct String));
+	struct String* s3 = malloc(sizeof(struct String));
 	if (!s3)
 		return NULL;
 
@@ -98,28 +98,27 @@ struct String *concatenate(struct String *s1, struct String *s2)
 }
 
 /*
-	sizeString(struct String *s): returns size of string
+	sizeString(struct String* s): returns size of string
 	@parameters:
-		*s: pointer to string
+		s: pointer to string
 	@return: size of given string
 */
-size_t sizeString(struct String *s)
+size_t sizeString(struct String* s)
 {
 	return s->size;
 }
 
 /*
-	freeString(struct String *s): frees memory allocated to given string
+	freeString(struct String* s): frees memory allocated to given string
 	@parameters:
-		*s: pointer to string to be freed
+		s: pointer to string to be freed
 	@return: none
 */
 
-void freeString(struct String *s)
+void freeString(struct String* s)
 {
 	free(s->text);
 	free(s);
 	return;
 }
-
 

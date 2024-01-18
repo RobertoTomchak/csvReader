@@ -15,7 +15,7 @@
 */
 struct Column {
 	struct String title;
-	struct String *data;
+	struct String* data;
 	size_t size;
 };
 
@@ -26,7 +26,7 @@ struct Column {
 	num_columns is the number of columns in the table
 */
 struct Table {
-	struct Column *columns;
+	struct Column* columns;
 	size_t num_lines;
 	size_t num_columns;
 };
@@ -39,7 +39,7 @@ struct Table {
 		hasTitle: if columns have title or not
 	@return: a pointer to the Table structure with the content of the csv file
 */
-struct Table *readCSV(char *file, char delimiter, bool hasTitle);
+struct Table* readCSV(char* file, char delimiter, bool hasTitle);
 
 /*
 	getColumn: gets column with given title
@@ -48,7 +48,7 @@ struct Table *readCSV(char *file, char delimiter, bool hasTitle);
 		title: title of desired column
 	@return: pointer to column (NULL if not found)	
 */
-struct Column *getColumn(struct Table* table, char *title);
+struct Column* getColumn(struct Table* table, char* title);
 
 /*
 	ctoi: turns the data of a column into integers
@@ -56,7 +56,7 @@ struct Column *getColumn(struct Table* table, char *title);
 		column: pointer to column with data
 	@return: integer array with contents of column
 */
-int *ctoi (struct Column *column);
+int* ctoi(struct Column* column);
 
 /*
 	freeTable: frees given tablr and all of its contents

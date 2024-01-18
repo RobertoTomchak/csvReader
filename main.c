@@ -15,7 +15,7 @@ float average(int* grades, size_t n)
 int main()
 {
 	struct Table* table = readCSV("enem_data.csv", ';', true);
-	int *grades = ctoi(getColumn(table, "NU_NOTA_REDACAO"));
+	int* grades = ctoi(getColumn(table, "NU_NOTA_REDACAO"));
 	printf("Average Grade: %f\n", average(grades, table->num_lines));
 	freeTable(table);
 	free(grades);

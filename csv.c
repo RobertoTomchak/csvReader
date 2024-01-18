@@ -6,27 +6,7 @@
 #include "string.h"
 #include "csv.h"
 
-/*
-struct Column {
-	struct String *data;
-	size_t size;
-};
-
-struct Table {
-	struct Column *columns;
-	size_t size;
-};
-*/
-
-/*
-	readData: reads data from file and stores it
-	@parameters:
-		ptr: pointer to file
-		delimiter: where to stop reading data
-		data: pointer to string to store data
-	@return: 0 if reaches \n or EOF; 1 otherwise
-*/
-bool readData (FILE *ptr, char delimiter, struct String *data)
+bool readData (FILE* ptr, char delimiter, struct String* data)
 {
 	char c;
 	c = fgetc(ptr);
@@ -47,7 +27,7 @@ bool readData (FILE *ptr, char delimiter, struct String *data)
 		hasTitle: if columns have title or not
 	@return: a pointer to the Table structure with the content of the csv file
 */
-struct Table *readCSV(char *file, char delimiter, bool hasTitle)
+struct Table* readCSV(char* file, char delimiter, bool hasTitle)
 {
 	// counting number of lines and columns
 	// if sees any inconsistents, returns NULL
@@ -75,7 +55,7 @@ struct Table *readCSV(char *file, char delimiter, bool hasTitle)
 	table->num_columns = num_columns;
 	table->columns = malloc(num_columns * sizeof(struct Column));
 	for (size_t i = 0; i < num_columns; i++) {
-		struct String *temp = createString(0);
+		struct String* temp = createString(0);
 		table->columns[i].title = *temp;
 		free(temp);
 		table->columns[i].size = num_lines;
@@ -112,7 +92,7 @@ struct Table *readCSV(char *file, char delimiter, bool hasTitle)
 		title: title of desired column
 	@return: pointer to column (NULL if not found)	
 */
-struct Column *getColumn(struct Table* table, char *title)
+struct Column* getColumn(struct Table* table, char* title)
 {
 	for (size_t i = 0; i < table->num_columns; i++) {
 		struct Column* col = &(table->columns[i]);
@@ -139,9 +119,9 @@ struct Column *getColumn(struct Table* table, char *title)
 		column: pointer to column with data
 	@return: integer array with contents of column
 */
-int *ctoi (struct Column *column)
+int *ctoi (struct Column* column)
 {
-	int *data = malloc(column->size * sizeof(int));
+	int* data = malloc(column->size * sizeof(int));
 	for (int i = 0; i < column->size; i++)
 		data[i] = atoi(column->data[i].text);
 	return data;
