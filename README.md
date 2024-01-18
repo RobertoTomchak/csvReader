@@ -6,7 +6,7 @@ This library can be used in any type of CSV files, as long as data in the file i
 
 ## Basic usage
 There are three main structures in this library:
-- String: contains a C string (array of char that ends in '\0'), the size of the string (number of characters) and the capacity of th string(how many character can be stored without increasing size). This structure can be dinamically increased, similar to the vector structure in C++;
+- String: contains a C string (array of char that ends in '\0'), the size of the string (number of characters) and the capacity of th string (how many character can be stored without increasing size). This structure can be dinamically increased, similar to the vector structure in C++;
 - Column: contains the data of a column of the CSV file. This includes its title (if there is one), its size and the data (stored as strings, can be changed to int with the function ctoi);
 - Table: all the data of the CSV file. This included all the columns, as well as its number of lines and number of columns.
 <br><br>
