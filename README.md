@@ -1,5 +1,6 @@
 # csvReader
-This project is a C library that allows for making code that can read values from a CSV file, to be manipulated inside the software.
+## Description
+This project is a C library to manipulate values from a csv file.
 
 ## Applications
 This library can be used in any type of CSV files, as long as data in the file is separated by an unkown character. For example, if the delimiter is not ',', it's ';', this project can be used. However, only ASCII character can be read, so if the desired CSV file contains non-ASCII values, this library will probably lead to bugs.
